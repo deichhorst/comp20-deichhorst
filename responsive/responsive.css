@@ -1,8 +1,8 @@
-@media screen 
+ @media screen 
   and (min-width: 1201px)  { 
 
     /*"Homers Night Out"*/
-    .homer {width:166.5px; height:125px; background:url(responsive/homer.jpg) 0 0px;}
+    .homer {width:166.5px; height:125px; background:url(homer.jpg) 0 0px;}
 
 }
 
@@ -11,7 +11,7 @@
   and (min-width: 1101px)  { 
   	
      /*"Walking to Moe's"*/
-    .homer {width:166.5px; height:125px; background:url(responsive/homer.jpg) 166.5 0px;}
+    .homer {width:166.5px; height:125px; background:url(homer.jpg) 166.5 0px;}
 }
 
 @media screen 
@@ -19,7 +19,7 @@
   and (min-width: 1001px)  { 
 
     /*"Hmmm"*/
-  	.homer {width:166.5px; height:125px; background:url(responsive/homer.jpg) 0 125px;}
+  	.homer {width:166.5px; height:125px; background:url(homer.jpg) 0 125px;}
 }
 
 @media screen 
@@ -27,7 +27,7 @@
   and (min-width: 901px) { 
 
     /*"Grabbing Beer"*/
-  	.homer {width:166.5px; height:125px; background:url(responsive/homer.jpg) 166.5 125px;}
+  	.homer {width:166.5px; height:125px; background:url(homer.jpg) 166.5 125px;}
 }
 
 @media screen 
@@ -35,7 +35,7 @@
   and (min-width: 801px) { 
     
     /*"Scene missing #1"*/
-    .homer {width:166.5px; height:125px; background:url(responsive/homer.jpg) 0 250px;}
+    .homer {width:166.5px; height:125px; background:url(homer.jpg) 0 250px;}
 }
 
 @media screen 
@@ -43,7 +43,7 @@
   and (min-width: 701px) { 
     
     /*"Merry Go Round"*/
-    .homer {width:166.5px; height:125px; background:url(responsive/homer.jpg) 166.5 250px;}
+    .homer {width:166.5px; height:125px; background:url(homer.jpg) 166.5 250px;}
 }
 
 @media screen 
@@ -51,12 +51,12 @@
   and (min-width: 601px) { 
     
     /*"Scene Missing #2"*/
-    .homer {width:166.5px; height:125px; background:url(responsive/homer.jpg) 0 375px;}
+    .homer {width:166.5px; height:125px; background:url(homer.jpg) 0 375px;}
 }
 
 @media screen 
   and (max-width: 600px)  { 
     
     /*"The End"*/
-     .homer {width:166.5px; height:125px; background:url(responsive/homer.jpg) 166.5 375px;}
+     .homer {width:166.5px; height:125px; background:url(xhomer.jpg) 166.5 375px;}
 }
