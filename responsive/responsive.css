@@ -1,0 +1,63 @@
+@media screen 
+  and (min-width: 1201px) 
+  and (-webkit-min-pixel-ratio: 1) { 
+
+    /*"Homers Night Out"*/
+
+}
+
+@media screen 
+  and (max-width: 1200px) 
+  and (max-width: 1101px) 
+  and (-webkit-min-pixel-ratio: 1) { 
+  	
+     /*"Walking to Moe's"*/
+}
+
+@media screen 
+  and (max-width: 1100px) 
+  and (min-width: 1001px) 
+  and (-webkit-min-pixel-ratio: 1) { 
+
+    /*"Hmmm"*/
+  	
+}
+
+@media screen 
+  and (max-width: 1000px) 
+  and (min-width: 901px) 
+  and (-webkit-min-pixel-ratio: 1) { 
+
+    /*"Grabbing Beer"*/
+  	
+}
+
+@media screen 
+  and (max-width: 900px) 
+  and (min-width: 801px) 
+  and (-webkit-min-pixel-ratio: 1) { 
+    
+    /*"Scene missing #1"*/
+}
+
+@media screen 
+  and (max-width: 800px) 
+  and (min-width: 701px) 
+  and (-webkit-min-pixel-ratio: 1) { 
+    
+    /*"Merry Go Round"*/
+}
+
+@media screen 
+  and (max-width: 700px) 
+  and (min-width: 601px) 
+  and (-webkit-min-pixel-ratio: 1) { 
+    
+    /*"Scene Missing #2"*/
+}
+
+@media screen 
+  and (max-width: 600px) 
+  and (-webkit-min-pixel-ratio: 1) { 
+    /*"The End"*/
+}
