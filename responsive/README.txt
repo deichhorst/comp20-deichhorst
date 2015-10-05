@@ -2,6 +2,6 @@ Dexter Eichhorst
 LAB 4
 
 Discussed with: Kevin Halliday
-Approximate time spent on this lab: 4 hours
+Approximate time spent on this lab: 3 hours
 
-Responsive.css has basic categories put in AND works for some images. Details with picture display still not 100% working. Has to do with last part of sprite part. 
+Responsive.css has all the screen width categories put in with correct media queries. Page works to project specifications. When the window width is decreased, the correct images now show in the correct order as per the “silent movie” idea discussed by Pro. Chow in class. 
