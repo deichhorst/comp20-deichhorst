@@ -4,7 +4,8 @@ function parse(){
 
 	xhr.onreadystatechange = function() {
 		if(xhr.readyState === 4 && xhr.status === 200) {
-			console.log('You da man');
+			json = xhr.responseText;
+			console.log(json);
 		}
 	};
 
