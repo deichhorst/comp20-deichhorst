@@ -1,5 +1,8 @@
-var xhr = new XMLHttpRequest();
-var json;
+parse(){
+	var xhr = new XMLHttpRequest();
+	var json;
 
-xhr.open('GET', 'data.json', true);
-xhr.send();
+	xhr.open('GET', 'data.json', true);
+	xhr.send();
+
+}
