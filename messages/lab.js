@@ -1,4 +1,4 @@
-parse(){
+function parse(){
 	var xhr = new XMLHttpRequest();
 	var json;
 
