@@ -2,11 +2,11 @@ function parse(){
 	var xhr = new XMLHttpRequest();
 	var json;
 
-	xhr.onreadystatechange = function() {
-		if(xhr.readyState === 4 && xhr.status === 200) {
+	//xhr.onreadystatechange = function() {
+	//	if(xhr.readyState === 4 && xhr.status === 200) {
 			json = JSON.parse(xhr.responseText);
-		}
-	};
+	//	}
+	//};
 
 	xhr.open('GET', 'data.json', true);
 	xhr.send();
