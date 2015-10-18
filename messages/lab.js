@@ -13,7 +13,7 @@ function parse(){
 
 	elem = document.getElementById("messages");
 	
-	for (count = 0; count < json.length; count++) {
+	for (count = 0; count < Object.keys(json).length; count++) {
 			console.log(Object.keys(json[count]));
 			elem.innerHTML += "<p> <h2>" + json[count]["content"] + "</h2>" + json[count]["username"] + "</p>";
 	}
