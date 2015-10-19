@@ -1,11 +1,12 @@
 function parse(){
 	var xhr = new XMLHttpRequest();
 	var json;
-	json = JSON.parse(xhr.responseText);
 	
 	xhr.open('GET', 'data.json', true);
 	xhr.send();
 
+	json = JSON.parse(xhr.responseText);
+	
 	elem = document.getElementById("messages");
 	
 	for (count = 0; count < json.length; count++) {
