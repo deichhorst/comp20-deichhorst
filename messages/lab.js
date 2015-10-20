@@ -9,12 +9,14 @@ function parse(){
 		if(xhr.readyState == 4){
 	        json = JSON.parse(xhr.responseText);
         	console.log(json.length);
+        	elem = document.getElementById("messages");
+
+			elem.innerHTML += "<p> <h2>" + json[0]["content"] + 
+			"</h2>" + json[0]["username"] + "</p>";
+			elem.innerHTML += "<p> <h2>" + json[1]["content"] + 
+			"</h2>" + json[1]["username"] + "</p>";
     	}
     };
 	
-	elem = document.getElementById("messages");
 
-	elem.innerHTML += "<p> <h2>" + json[0]["content"] + "</h2>" + json[0]["username"] + "</p>";
-	
-	elem.innerHTML += "<p> <h2>" + json[1]["content"] + "</h2>" + json[1]["username"] + "</p>";
 }
