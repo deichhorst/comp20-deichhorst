@@ -5,7 +5,7 @@ function parse(){
 	xhr.open('GET', 'data.json', true);
 	xhr.send();
 
-	json = JSON.parse(xhr);
+	json = JSON.parse(xhr.responseText);
 	
 	elem = document.getElementById("messages");
 	
