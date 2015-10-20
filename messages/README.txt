@@ -1,7 +1,9 @@
 Name: Dexter Eichhorst
 Project: Messages
 
-Project Discussed With: 
-Time Spent on this Project: 30 mins
+Project Discussed With: Kevin Halliday
+Time Spent on this Project: 2 hours
 
-Project has just been started...no new code in any files
+Still debugging lab.js file which is having issues parsing text. CSS file has basics outlined. 
+
+NOT functional as of yet. 
