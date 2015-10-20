@@ -11,8 +11,7 @@ function parse(){
         	elem = document.getElementById("messages");
 
         	for (count = 0; count < json.length; count++) {
-				elem.innerHTML += "<p> <h2>" + json[count]["content"] + 
-				"</h2>" + json[count]["username"] + "</p>";
+				elem.innerHTML += "<p>" + json[count]["content"] + "   -" + json[count]["username"] + "</p>";
     		}
     	}
     };
