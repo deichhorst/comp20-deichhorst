@@ -1,9 +1,12 @@
 /* Your CSS here... */
 
-h2 {
+p { 
+	font-size: 30px;
 	background-color: yellow;
 }
 
-p { 
-	font-size: 30px;
+html {
+
+	background-color: green;
+
 }
