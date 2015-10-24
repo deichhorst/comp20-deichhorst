@@ -4,7 +4,7 @@ Things to do:
 
 Retrieves location via navigator.geolocation (check)
 
-Sends location to datastore properly encoded (nope)
+Sends location to datastore properly encoded (check)
 
 Displays your location on the map with unique marker (check)
 
@@ -34,10 +34,13 @@ var myOptions = {
 };
 var map;
 var marker;
+var json;
 var infowindow = new google.maps.InfoWindow();
 
 	
-function getMyLocation() {
+
+//update myLat and myLng to coordinates
+function getMyLocation() { 
 	if (navigator.geolocation) { 
 		navigator.geolocation.getCurrentPosition(function(position) {
 		myLat = position.coords.latitude;
@@ -55,7 +58,7 @@ function getMyLocation() {
 
 
 
-
+//create map and place self on it
 function renderMap()		
 {
 	me = new google.maps.LatLng(myLat, myLng);
@@ -66,7 +69,8 @@ function renderMap()
 	// Create a marker
 	marker = new google.maps.Marker({
 		position: me,
-		title: "Here I Am!"
+		title: "Here I Be Landlubberer"
+		icon: 'icon.png'
 	});
 				
 	marker.setMap(map);
@@ -84,8 +88,8 @@ function renderMap()
 function getdata()
 {
 	var http = new XMLHttpRequest();
-	var url = "https://secret-about-box.herokuapp.com/sendLocation";
-	var params = "login=JefflynGage&lat="+ myLat +"&lng="+myLng+"&message=YOUR_MESSAGE";
+	var url = encodeURIComponent("https://secret-about-box.herokuapp.com/sendLocation");
+	var params = "login=JefflynGage&lat="+ myLat +"&lng="+myLng+"&message=Bacon%20is%20Satan";
 	http.open("POST", url, true);
 
 	//Send the proper header information along with the request
@@ -95,15 +99,17 @@ function getdata()
 
 	http.onreadystatechange = function() {//Call a function when the state changes.
     	if(http.readyState == 4 && http.status == 200) {
-        	alert(http.responseText);
+        	json = JSON.parse(xhr.responseText);
 	    }
 	}
+	
 	http.send(params);
 }
 
 </script>
-</head>
 
+
+</head>
 <body onload="init()">
 <div id = "canvas"></div>
 </body>
