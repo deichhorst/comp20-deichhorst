@@ -8,7 +8,8 @@ Sends location to datastore properly encoded (check)
 
 Displays your location on the map with unique marker (check)
 
-Retrieves locations of people in the class (nope)
+Retrieves locations of people in the class
+HAVERSINE STUFF (nope)
 
 Displays location of people in class and info (nope)
 
@@ -37,7 +38,14 @@ var marker;
 var json;
 var infowindow = new google.maps.InfoWindow();
 
-	
+
+
+function init() {
+
+	getMyLocation();
+	console.log(myLat);
+	console.log(myLng);
+}
 
 //update myLat and myLng to coordinates
 function getMyLocation() { 
