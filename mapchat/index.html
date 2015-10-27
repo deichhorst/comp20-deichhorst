@@ -55,7 +55,9 @@ function getMyLocation() {
 		navigator.geolocation.getCurrentPosition(function(position) {
 		myLat = position.coords.latitude;
 		myLng = position.coords.longitude;
-						//renderMap();
+		//renderMap();
+		console.log(myLat);
+		console.log(myLng);
 		});
 	}
 	else {
