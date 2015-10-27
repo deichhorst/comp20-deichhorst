@@ -25,7 +25,6 @@ JefflynGage
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"> </script>
 
 <script>
-
 var http = new XMLHttpRequest();
 var myLat = 0;
 var myLng = 0;			
@@ -45,30 +44,24 @@ var infowindow = new google.maps.InfoWindow();
 function init() {
 
 	getMyLocation();
-	console.log(myLat);
-	console.log(myLng);
+
 }
 
 //update myLat and myLng to coordinates
 function getMyLocation() { 
 	if (navigator.geolocation) { 
 		navigator.geolocation.getCurrentPosition(function(position) {
-		myLat = position.coords.latitude;
-		myLng = position.coords.longitude;
-		//renderMap();
-		console.log(myLat);
-		console.log(myLng);
+			myLat = position.coords.latitude;
+			myLng = position.coords.longitude;
+			console.log(myLat);
+			console.log(myLng);
+			renderMap();
 		});
 	}
 	else {
 		alert("Geolocation is not supported by your web browser.  What a shame!");
 	}
 }
-
-
-
-/*
-
 
 //create map and place self on it
 function renderMap()		
@@ -82,7 +75,6 @@ function renderMap()
 	marker = new google.maps.Marker({
 		position: me,
 		title: "Here I Be Landlubberer"
-		icon: 'icon.png'
 	});
 				
 	marker.setMap(map);
@@ -94,6 +86,7 @@ function renderMap()
 	});
 }
 
+/*
 
 
 
