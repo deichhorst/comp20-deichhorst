@@ -4,9 +4,9 @@ Things to do:
 
 Retrieves location via navigator.geolocation (check)
 
-Sends location to datastore properly encoded (check)
+Sends location to datastore properly encoded (?)
 
-Displays your location on the map with unique marker (check)
+Displays your location on the map with unique marker (?)
 
 Retrieves locations of people in the class
 HAVERSINE STUFF (nope)
@@ -21,7 +21,7 @@ JefflynGage
 
 <html>
 <head>
-	<title>Geolocation Map Example</title>
+	<title>Assignment 2</title>
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
 	<link rel="stylesheet" href="mapstyle.css" />
@@ -66,10 +66,14 @@ JefflynGage
 			map.panTo(me);
 	
 			// Create a marker
+			var image = 'logo.png';
 			marker = new google.maps.Marker({
 				position: me,
-				title: "Here I Am!"
+				title: "I'M COMING FOR YOU", 
+				map: map, 
+				icon: image
 			});
+			
 			marker.setMap(map);
 					
 			// Open info window on click of marker
