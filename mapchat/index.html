@@ -102,6 +102,7 @@ JefflynGage
     			if(http.readyState == 4 && http.status == 200) {
         			json = JSON.parse(xhr.responseText);
         			http.send(params);
+        			console.log("booyah");
 	    		}
 			}
 	
