@@ -2,6 +2,10 @@ Name: Dexter Eichhorst
 Project: Mapchat
 
 Project Discussed With: Kevin Halliday
-Time Spent on this Project: 2 hours
+Time Spent on this Project: 4 hours
 
-Just began assignment 2 project
+All Assignment aspects are up to project specs. Website is working as outlined in Assignment 2 outline. 
+
+Credit to Ming Chow for rendermap() and and getmylocation() funcitons. 
+
+All other functions have incorporated code from Stackoverflow.com
