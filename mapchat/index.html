@@ -91,7 +91,7 @@ JefflynGage
 		}
 		function getdata() {
 			var http = new XMLHttpRequest();
-			var url = encodeURIComponent("https://secret-about-box.herokuapp.com/sendLocation");
+			var url = "https://secret-about-box.herokuapp.com/sendLocation";
 			var params = "login=JefflynGage&lat="+ myLat +"&lng="+myLng+"&message=Bacon%20is%20Satan";
 			http.open("POST", url, true);
 
@@ -100,15 +100,10 @@ JefflynGage
 
 			http.onreadystatechange = function() {//Call a function when the state changes.
     			if(http.readyState == 4 && http.status == 200) {
-    				console.log('blah');
         			json = JSON.parse(http.responseText);
-        			console.log('booyah');
-        		}
+             	}
 			}
-			console.log('yay');
 			http.send(params);
-	
-			
 		}
 	</script>
 	</head>
