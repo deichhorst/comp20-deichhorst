@@ -1,0 +1,140 @@
+<!--//index.html page for assignment 2
+
+Things to do: 
+
+MERGE GH-PAGES WITH MASTER BRANCH
+
+Retrieves location via navigator.geolocation (check)
+
+Sends location to datastore properly encoded (check)
+
+Displays your location on the map with unique marker (?)
+
+Retrieves locations of people in the class (check)
+
+HAVERSINE STUFF (nope)
+
+Displays location of people in class and info (nope)
+
+JefflynGage
+
+-->
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Assignment 2</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+	<link rel="stylesheet" href="mapstyle.css" />
+		
+	<script>
+		var json;
+		var myLat = 0;
+		var myLng = 0;
+		var request = new XMLHttpRequest();
+		var me = new google.maps.LatLng(myLat, myLng);
+		var myOptions = {
+					zoom: 13, // The larger the zoom number, the bigger the zoom
+					center: me,
+					mapTypeId: google.maps.MapTypeId.ROADMAP
+				};
+		var map;
+		var marker;
+		var infowindow = new google.maps.InfoWindow();
+			
+		function init()
+		{
+			map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+			getMyLocation();
+			getdata(display_others);
+		}
+			
+		function getMyLocation() {
+			if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
+				navigator.geolocation.getCurrentPosition(function(position) {
+					myLat = position.coords.latitude;
+					myLng = position.coords.longitude;
+					renderMap();
+				});
+			}
+			else {
+				alert("Geolocation is not supported by your web browser.  What a shame!");
+			}
+		}
+		function renderMap()
+		{
+			me = new google.maps.LatLng(myLat, myLng);
+				
+			// Update map and go there...
+			map.panTo(me);
+	
+			// Create a marker
+			var image = 'logo.png';
+			
+			
+			marker = new google.maps.Marker({
+				position: me,
+				title: "Login: JefflynGage" + "<br" + "Message: I'M COMING FOR YOU", 
+				map: map, 
+				icon: image
+			});
+			
+			marker.setMap(map);
+					
+			// Open info window on click of marker
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.setContent(marker.title);
+				infowindow.open(map, marker);
+			});
+		}
+		function getdata(callback) {
+			var http = new XMLHttpRequest();
+			var url = "https://secret-about-box.herokuapp.com/sendLocation";
+			var params = "login=JefflynGage&lat="+ myLat +"&lng="+myLng+"&message=Bacon%20is%20Satan";
+			http.open("POST", url, true);
+
+			//Send the proper header information along with the request
+			http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+			http.onreadystatechange = function() {//Call a function when the state changes.
+    			if(http.readyState == 4 && http.status == 200) {
+        			json = JSON.parse(http.responseText);
+        			callback(json);
+             	}
+			}
+			http.send(params);
+			
+		}
+		function display_others(json){
+			
+			var collection = new Array();
+			var marker, i;
+
+ 			
+ 			for (i = 0; i < json.length; i++) {  
+      			marker = new google.maps.Marker({
+        		position: new google.maps.LatLng(json[i]["lat"], json[i]["lng"]),
+        		map: map
+      			});
+
+      			google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        		return function() {infowindow.setContent( "Login: " + json[i]["login"] + "<br>" + "Message: " + json[i]["message"] + "<br>" + "Distance: ");infowindow.open(map, marker);}
+      			})(marker, i));
+    		}		
+
+    	}
+
+	</script>
+	</head>
+	
+	<body onload="init()">
+		<div id="map_canvas"></div>
+	</body>
+</html>
+
+
+
+
+
