@@ -27,7 +27,7 @@
 		{
 			map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 			getMyLocation();
-			getdata(display_others);
+			//getdata(display_others);
 		}
 			
 		function getMyLocation() {
@@ -36,6 +36,7 @@
 					myLat = position.coords.latitude;
 					myLng = position.coords.longitude;
 					renderMap();
+					getdata(display_others);
 				});
 			}
 			else {
@@ -55,7 +56,7 @@
 			
 			marker = new google.maps.Marker({
 				position: me,
-				title: "Login: JefflynGage" + "<br" + "Message: I'M COMING FOR YOU", 
+				title: "Login: JefflynGage" + "<br>" + "Message: Bacon is Satan" + "<br>" + "Distance: 0", 
 				map: map, 
 				icon: image
 			});
@@ -84,6 +85,7 @@
              	}
 			}
 			http.send(params);
+			
 			
 		}
 		function display_others(json){

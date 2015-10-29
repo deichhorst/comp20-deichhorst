@@ -6,7 +6,23 @@
 	<title>Captain's Log</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script>
-	  // Your work will be done here...
+	
+	var content;
+	var date; 
+	var temp_date;
+
+	$(document).ready(function(){
+		$("#msg").keyup(function (e) {
+    		if (e.keyCode == 13) {
+    	    	content = $('#msg').val();
+    	    	date = new Date();
+    	    	temp_date = date.toString();
+    	    	$("div#log").prepend(temp_date + " - " + content + "<br>");
+    		}
+		});
+
+	});
+
 	</script>
 </head>
 
