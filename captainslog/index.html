@@ -7,22 +7,14 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script>
 	
-	var content;
-	var date; 
-	var temp_date;
-	var msg;
+	var content,date,temp_date,msg;
 	var count = 0;
 
 	$(document).ready(function(){
 		count = localStorage.getItem("count");
-
 		for (i=0; i<count; i++) {
-
 			$("div#log").prepend(localStorage.getItem(i));
-
 		}
-		
-
 		$("#msg").keyup(function (e) {
     		if (e.keyCode == 13) {
     	    	content = $('#msg').val();
@@ -35,13 +27,7 @@
     	    	localStorage.setItem("count",count);
     		}
 		});
-
 	});
-
-	
-
-
-
 
 	</script>
 </head>
