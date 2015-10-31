@@ -7,11 +7,11 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script>
 	
-	var content,date,temp_date,msg;
-	var count = 0;
+	var content,date,temp_date,msg,count = 0;
 
 	$(document).ready(function(){
 		count = localStorage.getItem("count");
+		if (count == null){count = 0;}
 		for (i=0; i<count; i++) {
 			$("div#log").prepend(localStorage.getItem(i));
 		}
@@ -20,11 +20,12 @@
     	    	content = $('#msg').val();
     	    	date = new Date();
     	    	temp_date = date.toString();
-    	    	msg = temp_date + " - " + content + "<br>"
+    	    	msg = temp_date + " - " + content + "<br>" + "<br>";
     	    	$("div#log").prepend(msg);
     	    	localStorage.setItem(count,msg);
     	    	count++;
     	    	localStorage.setItem("count",count);
+    	    	$('#msg').val('');
     		}
 		});
 	});
