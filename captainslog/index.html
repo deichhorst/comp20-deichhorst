@@ -10,18 +10,38 @@
 	var content;
 	var date; 
 	var temp_date;
+	var msg;
+	var count = 0;
 
 	$(document).ready(function(){
+		count = localStorage.getItem("count");
+
+		for (i=0; i<count; i++) {
+
+			$("div#log").prepend(localStorage.getItem(i));
+
+		}
+		
+
 		$("#msg").keyup(function (e) {
     		if (e.keyCode == 13) {
     	    	content = $('#msg').val();
     	    	date = new Date();
     	    	temp_date = date.toString();
-    	    	$("div#log").prepend(temp_date + " - " + content + "<br>");
+    	    	msg = temp_date + " - " + content + "<br>"
+    	    	$("div#log").prepend(msg);
+    	    	localStorage.setItem(count,msg);
+    	    	count++;
+    	    	localStorage.setItem("count",count);
     		}
 		});
 
 	});
+
+	
+
+
+
 
 	</script>
 </head>
