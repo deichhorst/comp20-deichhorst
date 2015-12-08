@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Assignment 4</title>
+</head>
+<body>
+<h1>Assignment 4</h1>
+<h2>Introduction</h2>
+<p>This assessment was designed to test the security of the server code written by my classmate Mateo Davis for Assignment 3. The product is designed to have three main features: 
+
+1) a POST /sendLocation API which submits checkins from any domain. This API has four pieces of data that are required for an entry to be added to the database: "login,lat,lng, and message". Upon successful insertion of record into the database, the API returns a JSON string that is an array of objects outlining all other checkins into the database.
+
+2) a GET /latest.json API which returns the last known checkin instance of a given login. If none is found, the api returns an empty json obect. 
+
+3) a Get / - Home. This returns HTML with a log of all the checkins to the database, newest first. 
+</p>
+
+<p>I was hired to "penetrate test and analyze" this website for possible security and privacy problems. Specifically, I was hired to find a minimum of 3 vulnerabilities in the product.</p>
+
+<h2>Methodology</h2>
+
+<p>I began testing the application with a series of attacks mentioned in class. I tried to inject malicious code into areas of the application using the Postman App I used to test my own server code and observed the results. Once I thought I had exhausted my reserve of black box testing ideas, I looked at the source code and manually looked through the APIs trying to unveil new vulnerabilities using my knowledge of the servers processes.</p>
+
+<h2>Abstract of Findings</h2>
+
+<p>The first vulnerability I found in this product was cross site scripting vulnerability. More specifically, users of the web application can insert HTML, Javascript and other code in place of the data that the web application expects to receive. For example, an attacker could choose to insert code to make the webpage background an offensive picture in place of their “message”. I will lay this out in more detail later, but essentially a single user can cause serious damage to the web app by exploiting this weakness.</p>
+
+<p>The second issue I discovered was the possibility for users to enter additional database fields and have them be sent and added to the server. For example, a user could enter in animal:giraffe as a key-value pair and the database would have to deal with this additional information accordingly. While this is not as serious issue as the cross site scripting vulnerability, if the web app was being used by a large amount of clients this issue could become more problematic. Dealing with unnecessarily large data packages for each user is a waste of database resources and lookups. Ideally, the database would only use data it needed to function properly: login, lat, long, message.</p>
+
+<p>The third vulnerability I discovered was being prone to a Denial of Services (DoS) attack. In this case, a client could post data so frequently that the database loses all of its functionality and can even crash completely because it has to constantly store and display the vast amount of incoming data. This vulnerability is also very serious as it could potentially completely destroy the web application and make it useless to clients. </p>
+
+<h2>Issues Found</h2>
+	<ul>
+
+	<li><h2>Cross Site Scripting</h2>
+	<p>Severity: HIGH (an attacker could effectively render the webpage unusable to other clients and ruin the applications reputation)</p>
+	<p>Location: GET / - Home</p>
+	<p>I started investigating this vulnerability using the in class examples as a springboard to launch more intense attacks on the server. Inserting images like the following is relatively easy, the user just has to enter an HTML image tag in place of their message: </p>
+	<img src="images/css2.png" alt="XSS example1" height="375" width="875">
+	<p> Adding a few more attributes can lead to a more unpleasant experience for the user:</p>
+	<img src="images/css1.png" alt="XSS example2" height="475" width="875">
+	<p>Even these relatively tame examples do not encapsulate how vulnerable this makes the product. For example, an attacker could just inject the following code into the database using the same technique and make the web page constantly redirect to a different site.</p>
+	<img src="images/css3.png" alt="XSS example3" height="150" width="875">
+	<p>While this vulnerability is serious, it is relatively common and as such there are many options for protecting against this type of attack. Many companies have developed software packages to santize user input before it is viewed by the end user. This technique can also be handled manually by running all potentially dangerous characters: brackets, quotation marks..etc through a whitelist and escaping any potentially dangerous input before it is allowed into the database.
+	</li>
+
+	<li><h2>Denial of Services</h2>
+	<p>Severity: HIGH (an attacker could also use this vulnerability to make the application useless to potential clients)</p>
+	<p>Location: GET / - Home</p>
+	<p>Currently, a user can submit a checkin to the database as many times as they want to. Unfortunately, this makes the web application very vulnerable as an attacker with the right amount of processing power can submit almost unlimited amounts of checkins per second to the application, rendering the checkins homepage useless to clients as it will just be a list of the attackers entries. Any legitimate input from clients will be flooded out by the attackers spam entries. While this may seem difficult to do, the command is very easy. For example, I wrote the following command:
+	<img src="images/spam.png" alt="XSS example4" height="40" width="800">
+	<p>Running this command on multiple terminal tabs on my machine could produce about 5 entries per second, resulting in the following output to the checkins homepage:</p>
+	<img src="images/spam2.png" alt="XSS example5" height="450" width="800">
+	<p>With a idealized hacking environment (more powerful computer, a better connection...etc) an attacker could dramatically improve on these numbers. When I ran the same command on multiple different computers, I achieved the following result:</p>
+	<img src="images/error.png" alt="XSS example6" height="150" width="700">
+	<p>In reality, it is difficult to defend against sophisticated DoS or DDoS attacks. In this context, however, some slightly more crude measures can be taken to at least deflect the full force of the attacks. For example, the server could limit amount of checkins given to a login in a specific amount of time. More specifically, the server could look up the lastest instance of a checkin with that login (already implemented in /latest.json query route). By calculating the difference between the current date and the date of the last checkin and setting a minimum time elapsed of 5 minutes before accepting another checkin from that login, the server could protect itself from DoS type attacks while hopefully not inconveniencing its real clients. 
+	<pre><code>
+	function mins_between( date1, date2 ) {
+  		var one_day=1000*60*60*24; //get day in milliseconds for accuracy
+  		var date1_ms = date1.getTime();
+  		var date2_ms = date2.getTime();
+  		var difference_ms = date2_ms - date1_ms;
+  		return (Math.round(difference_ms/60000)); //60000 is the number of milliseconds per minute
+	}
+	</code></pre>
+	Furthermore, if a certain login has a pattern of spamming behavior, it could be removed from the valid login list.
+
+
+
+	</li>
+	<li><h2>Query Injections</h2>
+	<p>Severity: HIGH (an attacker could use this vulnerability to steal information about the products clients)</p>
+	<p>Location: GET /latest.json </p>
+	<p>hallelujah</p>
+	</li>
+	</ul>
+
+
+<h2>Conclusion</h2>
+
+</body>
+</html>
