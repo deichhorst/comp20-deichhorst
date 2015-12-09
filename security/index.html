@@ -8,7 +8,6 @@
 <h2>Introduction</h2>
 <p>This assessment was designed to test the security of the server code written by my classmate Mateo Davis for Assignment 3. The product is designed to have three main features: </p>
 <ul>
-
 <li>1) a POST /sendLocation API which submits checkins from any domain. This API has four pieces of data that are required for an entry to be added to the database: "login,lat,lng, and message". Upon successful insertion of record into the database, the API returns a JSON string that is an array of objects outlining all other checkins into the database.</li>
 
 <li>2) a GET /latest.json API which returns the last known checkin instance of a given login. If none is found, the api returns an empty json obect.</li> 
