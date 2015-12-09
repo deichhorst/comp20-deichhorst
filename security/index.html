@@ -8,7 +8,6 @@
 <h2>Introduction</h2>
 <p>This assessment was designed to test the security of the server code written by my classmate Mateo Davis for Assignment 3. The product is designed to have three main features: </p>
 <ul>
-
 <li>1) a POST /sendLocation API which submits checkins from any domain. This API has four pieces of data that are required for an entry to be added to the database: "login,lat,lng, and message". Upon successful insertion of record into the database, the API returns a JSON string that is an array of objects outlining all other checkins into the database.</li>
 
 <li>2) a GET /latest.json API which returns the last known checkin instance of a given login. If none is found, the api returns an empty json obect.</li> 
@@ -24,7 +23,7 @@
 
 <h2>Abstract of Findings</h2>
 
-<p>The first vulnerability I found in this product was cross site scripting vulnerability. More specifically, users of the web application can insert HTML, Javascript and other code in place of the data that the web application expects to receive. For example, an attacker could choose to insert code to make the webpage background an offensive picture in place of their "message". I will lay this out in more detail later, but essentially a single user can cause serious damage to the web app by exploiting this weakness.</p>
+<p>The first vulnerability I found in this product was cross site scripting vulnerability. More specifically, users of the web application can insert HTML, Javascript and other code in place of the data that the web application expects to receive. For example, an attacker could choose to insert code to make the webpage background an offensive picture in place of their “message”. I will lay this out in more detail later, but essentially a single user can cause serious damage to the web app by exploiting this weakness.</p>
 
 <p>The second issue I discovered was the possibility for users to enter additional database fields and have them be sent and added to the server. For example, a user could enter in animal:giraffe as a key-value pair and the database would have to deal with this additional information accordingly. While this is not as serious issue as the cross site scripting vulnerability, if the web app was being used by a large amount of clients this issue could become more problematic. Dealing with unnecessarily large data packages for each user is a waste of database resources and lookups. Ideally, the database would only use data it needed to function properly: login, lat, long, message.</p>
 
